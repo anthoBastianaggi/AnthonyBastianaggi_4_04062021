@@ -269,10 +269,10 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
-.checkbox-input {
+.checkbox-input, .checkbox-input-location {
   display: none;
 }
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input-location:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
