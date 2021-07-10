@@ -55,28 +55,24 @@
                 <label for="first">Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="64" required />
                 <span id="first-error"></span>
-                <br>
               </div>
 
               <div class="formData">
                 <label for="last">Nom</label><br>
                 <input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="64" required />
                 <span id="last-error"></span>
-                <br>
               </div>
 
               <div class="formData">
                 <label for="email">E-mail</label><br>
                 <input class="text-control" type="email" id="email" name="email" required />
                 <span id="email-error"></span>
-                <br>
               </div>
 
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate" />
-                <span id="birhdate-error"></span>
-                <br>
+                <input class="text-control" type="date" id="birthdate" name="birthdate" min="1900-01-01" required />
+                <span id="birthdate-error"></span>
               </div>
 
               <div class="formData">
@@ -115,18 +111,24 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <span id="cgu-error"></span>
-                <br>
 
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br>
               </div>
 
-              <input class="btn-submit" type="submit" class="button" value="C'est parti" id="btn-submit" />
+              <input class="btn-submit" type="button" class="button" value="C'est parti" id="btn-submit" />
             </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm-modal" id="modal-success">
+        <div class="content confirm-modal-content">
+          <div class="modal-body confirm-modal-body">
+            <p class="confirm-modal-message">Merci ! Votre réservation a été reçue.</p>
           </div>
         </div>
       </div>

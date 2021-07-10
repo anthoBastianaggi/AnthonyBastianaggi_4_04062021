@@ -19,6 +19,7 @@ export function isNumber(val) {
 export function producePrompt(message, id, color) {
     document.getElementById(id).innerHTML = message;
     document.getElementById(id).style.color = color;
+    document.getElementById(id).style.display = "block";
 }
 
 // Function add message invalid 

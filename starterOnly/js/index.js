@@ -1,7 +1,7 @@
 import { readTextFile } from './utils/utils.js';
-import { firstname, lastname, email, quantity, btn , regex } from './constants/constants.js';
-import { validateName, validateEmail, validateQuantity, validate } from './validate/validate.js';
-import { removeInvalidMessageName, removeInvalidMessageEmail, removeInvalidMessageQuantity } from './removeMessage/removeMessage.js';
+import { firstname, lastname, email, birthdate, quantity, formLocation, formCgu, locations, cgu, btn , regex, form, modalSuccess, modalbg } from './constants/constants.js';
+import { validateName, validateEmail, validateQuantity, validateBirthdate, validate } from './validate/validate.js';
+import { removeInvalidMessageName, removeInvalidMessageEmail, removeInvalidMessageBirthdate, removeInvalidMessageQuantity, removeInvalidMessageCGU, removeInvalidMessageLocation } from './removeMessage/removeMessage.js';
 
 // Initialize variable data json
 var data = null;
@@ -11,7 +11,7 @@ readTextFile("./json/errorMessages.json", function(text){
     data = JSON.parse(text);
 });
 
-firstname.addEventListener("focus", function() {
+firstname.addEventListener("focusout", function() {
     removeInvalidMessageName(firstname, regex.regexName, 'first-error')
 }, true);
 
@@ -20,7 +20,7 @@ firstname.addEventListener("blur", function() {
     data.firstNameValueRegex, data.firstNameValueMinLength, data.firstNameValueMaxLength)
 }, true);
 
-lastname.addEventListener("focus", function() {
+lastname.addEventListener("focusout", function() {
     removeInvalidMessageName(lastname, regex.regexName, 'last-error')
 }, true);
 
@@ -29,7 +29,7 @@ lastname.addEventListener("blur", function() {
     data.lastNameValueRegex, data.lastNameValueMinLength, data.lastNameValueMaxLength)
 }, true);
 
-email.addEventListener("focus", function () {
+email.addEventListener("focusout", function () {
     removeInvalidMessageEmail(email, 'email-error');
 }, true)
 
@@ -37,7 +37,15 @@ email.addEventListener("blur", function() {
     validateEmail(email, 'email-error', 'red', data.emailValueMissing, data.emailValueRegex)
 }, true);
 
-quantity.addEventListener("focus", function() { 
+birthdate.addEventListener("focusout", function () {
+    removeInvalidMessageBirthdate(birthdate, regex.regexDate, 'birthdate-error');
+}, true)
+
+birthdate.addEventListener("blur", function() {
+    validateBirthdate(birthdate, 'birthdate-error', 'red', regex.regexDate, data.birthdateValueMissing, data.birthdateValueRegex, data.birthdateValue, data.birthdateMinValue, data.birthdateMaxValue)
+}, true);
+
+quantity.addEventListener("focusout", function() { 
     removeInvalidMessageQuantity(quantity, regex.regexNumber, 'quantity-error')
 }, true);
 
@@ -46,4 +54,21 @@ quantity.addEventListener("blur", function() {
     data.quantityValueRegex, data.quantityValueLength)
 }, true);
 
-btn.addEventListener('click', validate, false );
+Array.prototype.forEach.call(locations, function(radio) {
+    radio.addEventListener("change", function() { 
+        removeInvalidMessageLocation(formLocation, 'city-error')
+    }, true);
+});
+
+cgu.addEventListener("change", function() { 
+    removeInvalidMessageCGU(cgu, formCgu, 'cgu-error')
+}, true);
+
+btn.onclick = function() {
+    if(validate()) {
+        modalbg.style.display = "none";
+        modalSuccess.classList.add('show');
+        setTimeout(() => modalSuccess.classList.remove('show'), 2000);
+        setTimeout(() => form.submit(), 2000);
+    }
+};
