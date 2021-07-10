@@ -296,6 +296,9 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+#first-error, #last-error, #email-error, #birthdate-error, #quantity-error, #city-error, #cgu-error {
+  font-size: 20px;
+}
 .close {
   position: absolute;
   right: 15px;
@@ -333,6 +336,34 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.confirm-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+#modal-success.show {
+  display: block;  
+}
+
+.confirm-modal-content {
+  max-height: 760px;
+  height: 100%;
+  display: flex;
+}
+
+.confirm-modal-body {
+  display: flex;
+  align-items: center;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
