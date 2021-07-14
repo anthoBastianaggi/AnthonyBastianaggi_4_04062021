@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -36,6 +35,10 @@ img {
 }
 .header-logo {
     float: left;
+}
+.header-logo img {
+  width: auto;
+  height: auto;
 }
 .main-navbar {
     float: right;
@@ -74,6 +77,9 @@ img {
     float: right;
     display: block;
   }
+  .topnav .icon .fa-bars {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -97,7 +103,19 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    margin-top: 5px;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 20px;
     margin-top: -15px;
+  }
+} 
+
+@media screen and (max-width: 339px) {
+  .topnav a.icon {
+    margin-top: -46px;
   }
 } 
 
@@ -111,8 +129,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -136,6 +152,13 @@ main {
   padding: 10px;
   font-family: var(--font-slab);
 }
+
+@media screen and (max-width: 414px) {
+  main {
+    margin: 1px 0px 15px;
+  }
+}
+
 
 /* Modal form */
 
@@ -208,6 +231,21 @@ input {
   font-size: 20px;
   height: 48px;
 }
+.text-control:focus {
+  outline: 0;
+  border: 2px solid #007aff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.4);
+}
+.text-control.invalid {
+  border: 2px solid #e54858;
+}
+.text-control.invalid:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(229, 72, 88, 0.4);
+}
+.formData {
+  margin: 10px 0;
+}
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -226,12 +264,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+.formData.invalid .checkbox-label .checkbox-icon,
+.formData.invalid .checkbox2-label.label1 .checkbox-icon {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(229, 72, 88, 0.4);
+  border: 2px solid #e54858;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -297,9 +335,11 @@ input[data-error]::after {
   top: 19%;
 }
 #first-error, #last-error, #email-error, #birthdate-error, #quantity-error, #city-error, #cgu-error {
-  font-size: 20px;
+  font-size: .7em;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
-.close {
+.close, .close-modal-success {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -310,7 +350,9 @@ input[data-error]::after {
   transform: scale(0.7);
 }
 .close:before,
-.close:after {
+.close:after,
+.close-modal-success:before,
+.close-modal-success:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -318,14 +360,15 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.close:before, .close-modal-success:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close:after, .close-modal-success:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup, 
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -361,7 +404,15 @@ input[data-error]::after {
 
 .confirm-modal-body {
   display: flex;
+  flex-direction: column;
+  padding: 15px 9%;
+} 
+
+.confirm-modal-message-container {
+  display: flex;
   align-items: center;
+  flex: 1;
+  text-align: center;
 }
 
 /* custom select styles */
@@ -451,7 +502,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -509,7 +559,12 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 1080px) {
+  .hero-content {
+    min-width: 424px;
+  }
+}
+@media screen and (max-width: 1080px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -545,6 +600,13 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+
+@media screen and (max-width: 414px) {
+  .hero-headline {
+    font-size: 3.7rem;
   }
 }
 

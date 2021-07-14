@@ -1,5 +1,5 @@
 import { readTextFile } from './utils/utils.js';
-import { firstname, lastname, email, birthdate, quantity, formLocation, formCgu, locations, cgu, btn , regex, form, modalSuccess, modalbg } from './constants/constants.js';
+import { firstname, lastname, email, birthdate, quantity, formLocation, formCgu, locations, cgu, btn , regex, form, modalSuccess, modalbg, btnSuccess, modalSuccessClose } from './constants/constants.js';
 import { validateName, validateEmail, validateQuantity, validateBirthdate, validate } from './validate/validate.js';
 import { removeInvalidMessageName, removeInvalidMessageEmail, removeInvalidMessageBirthdate, removeInvalidMessageQuantity, removeInvalidMessageCGU, removeInvalidMessageLocation } from './removeMessage/removeMessage.js';
 
@@ -68,7 +68,5 @@ btn.onclick = function() {
     if(validate()) {
         modalbg.style.display = "none";
         modalSuccess.classList.add('show');
-        setTimeout(() => modalSuccess.classList.remove('show'), 2000);
-        setTimeout(() => form.submit(), 2000);
     }
 };
