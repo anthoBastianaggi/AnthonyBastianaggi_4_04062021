@@ -1,4 +1,4 @@
-import { modalbg, modalBtn, modalClose, iconMenu } from '../constants/constants.js';
+import { modalbg, modalBtn, modalClose, iconMenu, modalSuccess, btnSuccess, modalSuccessClose, form } from '../constants/constants.js';
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -23,7 +23,20 @@ modalClose.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modalbg) {
     modalbg.style.display = "none";
+  } else if(event.target == modalSuccess) {
+    modalSuccess.style.display = "none";
+    form.submit();
   }
+}
+
+// close modal success form button
+btnSuccess.onclick = function() {
+  form.submit();
+}
+
+// close modal success form icon close
+modalSuccessClose.onclick = function() {
+  form.submit();
 }
 
 // launch modal event

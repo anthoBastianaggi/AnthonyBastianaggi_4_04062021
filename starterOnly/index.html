@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-        <img alt="logo" src="images/Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="images/Logo.png" />
       </div>
 
       <div class="main-navbar">
@@ -106,7 +106,7 @@
 
               <div class="formData" id="form-cgu">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" checked required/>
-                <label class="checkbox2-label" for="checkbox1">
+                <label class="checkbox2-label label1" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -119,7 +119,7 @@
                 </label>
               </div>
 
-              <input class="btn-submit" type="button" class="button" value="C'est parti" id="btn-submit" />
+              <input class="btn-submit button" type="button" value="C'est parti" id="btn-submit" />
             </form>
           </div>
         </div>
@@ -127,8 +127,13 @@
 
       <div class="confirm-modal" id="modal-success">
         <div class="content confirm-modal-content">
+          <span class="close-modal-success"></span>
           <div class="modal-body confirm-modal-body">
-            <p class="confirm-modal-message">Merci ! Votre réservation a été reçue.</p>
+            <div class="confirm-modal-message-container">
+              <p class="confirm-modal-message">Merci ! Votre réservation a été reçue.</p>
+            </div>
+            
+            <input class="btn-close button" type="button" value="Fermer" id="btn-close-modal" />
           </div>
         </div>
       </div>
